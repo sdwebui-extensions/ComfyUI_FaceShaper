@@ -17,6 +17,10 @@ import os
 
 
 DLIB_DIR = os.path.join(folder_paths.models_dir, "dlib")
+cache_dir = "/stable-diffusion-cache/models/dlib"
+if not os.path.exists(os.path.join(DLIB_DIR, "shape_predictor_81_face_landmarks.dat")):
+     if os.path.exists(cache_dir):
+          DLIB_DIR = cache_dir
 class DLib:
     def __init__(self, predictor=68):
         self.face_detector = dlib.get_frontal_face_detector()
